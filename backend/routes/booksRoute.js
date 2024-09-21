@@ -75,7 +75,7 @@ router.put('/:id', async (request, response) => {
         if (!result) {
             return response.status(404).json({ message: 'Book not found'})
         }
-        return response.status(400).send({ message: 'Book updated successfully'})
+        return response.status(200).send({ message: 'Book updated successfully'})
     } catch (error) {
         console.log(error.message);
         response.status(500).send({ message: error.message});
