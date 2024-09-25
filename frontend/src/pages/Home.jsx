@@ -17,6 +17,7 @@ const Home = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/books`)
       .then((response) => {
+        console.log('Response data:', response.data);
         setBooks(response.data.data);
         setLoading(false);
       })
