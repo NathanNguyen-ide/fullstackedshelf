@@ -13,10 +13,10 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table');
   useEffect(() => {
-    // console.log('Fetching from:', `${process.env.REACT_APP_API_URL}/books`);
+    console.log('Fetching from:', `${import.meta.env.VITE_API_URL}/books`);
     setLoading(true);
     axios
-      .get(`${process.env.REACT_APP_API_URL}/books`)
+      .get(`${import.meta.env.VITE_API_URL}/books`)
       .then((response) => {
         console.log('Response data:', response.data);
         setBooks(response.data.data);
