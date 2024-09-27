@@ -1,8 +1,18 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle } from "react-icons/bi";
+import { useState } from "react";
 
 const BookModel = ({ book, onClose }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [comment, setComment] = useState(book.comment || "");
+
+  const handleEditToggle = () => {
+    if (isEditing) {
+      console.log("Saving comment:", comment);
+    }
+    setIsEditing(!isEditing);
+  };
   return (
     <div
       className="fixed bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
@@ -22,8 +32,22 @@ const BookModel = ({ book, onClose }) => {
                 <BiUserCircle className = 'text-red-300 text-2xl' />
                 <h2 className = 'my-1'>{book.author}</h2>
             </div>
-            <p className = 'mt-4'>Anwearhoreh</p>
-            <p className = 'my-2'>Anwearhasdddddddddddddddddddddddddddoreh</p>
+            <p className = 'mt-4'>Comments</p>
+            
+            <textarea
+              className="w-full h-24 mt-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300 resize-none"
+              disabled={!isEditing}
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="No comments yet"
+            ></textarea>
+
+            <button
+              className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              onClick={handleEditToggle}
+            >
+              {isEditing ? "Save" : "Edit"}
+            </button>
         </div>
     </div>
   );
