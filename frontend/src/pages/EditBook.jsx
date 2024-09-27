@@ -17,7 +17,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${process.env.REACT_APP_API_URL}/books/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/books/${id}`)
       .then((response) => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear)
@@ -38,7 +38,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .put(`${process.env.REACT_APP_API_URL}/books/${id}`, data)
+      .put(`${import.meta.env.VITE_API_URL}/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Edited Successfully', {variant: "success"});
