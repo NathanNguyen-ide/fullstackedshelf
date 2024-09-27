@@ -11,13 +11,14 @@ const app = express();
 app.use(express.json());
 
 // middleware for handling CORS
-app.use(
-    cors({
-        origin: 'https://fullstackedshelf.netlify.app',
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['Content-Type'],
-    })
-);
+app.use(cors());
+// app.use(
+//     cors({
+//         origin: 'https://fullstackedshelf.netlify.app',
+//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//         allowedHeaders: ['Content-Type'],
+//     })
+// );
 
 
 app.get('/', (request, response) => {
