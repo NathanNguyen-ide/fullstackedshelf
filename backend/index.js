@@ -23,7 +23,7 @@ app.use(cors());
 
 app.get('/', (request, response) => {
     console.log(request)
-    return response.status(234).send('Bookstore')
+    return response.status(234).send('Full Stacked Shelf')
 })
 
 // define middleware routing to books
