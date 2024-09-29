@@ -11,7 +11,7 @@ const BookModel = ({ book, onClose }) => {
   const handleEditToggle = async () => {
     if (isEditing) {
       try {
-        const response = await axios.put(`https://fullstackedshelf.onrender.com/api/books/${book._id}/comment`, {
+        const response = await axios.put(`${import.meta.env.VITE_API_URL}/books/${book._id}/comment`, {
           comment: comment,
         });
         console.log("Comment saved:", response.data);
