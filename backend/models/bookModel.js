@@ -15,6 +15,10 @@ const bookSchema = mongoose.Schema(
             type: Number,
             required:true,
         },
+        rating: {
+            type: Number,
+            required:true,
+        },
         comment: {
             type: String,
         },
