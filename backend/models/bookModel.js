@@ -15,6 +15,9 @@ const bookSchema = mongoose.Schema(
             type: String,
             required:true,
         },
+        comment: {
+            type: String,
+        },
     },
     {
         timestamps: true

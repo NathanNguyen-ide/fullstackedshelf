@@ -82,6 +82,36 @@ router.put('/:id', async (request, response) => {
     }
 });
 
+// route to update a book's comment
+router.put('/:id/comment', async (request, response) => {
+    try {
+        const { id } = request.params;
+
+        if (!request.body.comment) {
+            return response.status(400).send({
+                message: 'Please provide a comment',
+            });
+        }
+
+        const book = await Book.findById(id);
+        if (!book) {
+            return response.status(404).json({ message: 'Book not found' });
+        }
+
+        book.comment = request.body.comment;
+
+        const updatedBook = await book.save();
+
+        return response.status(200).json({
+            message: 'Comment updated successfully',
+            data: updatedBook,
+        });
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
+
 // route to delete a book
 router.delete('/:id', async (request, response) => {
     try {
