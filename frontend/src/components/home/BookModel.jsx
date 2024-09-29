@@ -15,6 +15,7 @@ const BookModel = ({ book, onClose }) => {
           comment: comment,
         });
         console.log("Comment saved:", response.data);
+        book.comment = comment;
       } catch (error) {
         console.error("Error saving comment:", error);
       }
