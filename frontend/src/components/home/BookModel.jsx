@@ -2,7 +2,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle } from "react-icons/bi";
 import { useState } from "react";
-import axios from "axios"; // Import axios for API requests
+import axios from "axios";
 
 const BookModel = ({ book, onClose }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -11,9 +11,8 @@ const BookModel = ({ book, onClose }) => {
   const handleEditToggle = async () => {
     if (isEditing) {
       try {
-        // Make a PUT request to update the comment
-        const response = await axios.put(`https://fullstackedshelf.onrender.com/api/books/${book._id}`, {
-          comment,
+        const response = await axios.put(`https://fullstackedshelf.onrender.com/api/books/${book._id}/comment`, {
+          comment: comment,
         });
         console.log("Comment saved:", response.data);
       } catch (error) {
